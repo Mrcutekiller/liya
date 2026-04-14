@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 16th Birthday, Liya 🎂</title>
+  <meta name="description" content="A special birthday celebration for Liya, turning 16 with amazing memories and wishes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========= ANIMATED BACKGROUND ========= -->
+  <div class="animated-bg" aria-hidden="true"></div>
+
+  <!-- ========= FLOATING HEARTS BACKGROUND ========= -->
+  <div class="hearts-container" id="heartsContainer"></div>
+
+  <!-- ========= PARTICLE STARS ========= -->
+  <div class="stars-container" id="starsContainer"></div>
+
+  <!-- ========= LANDING SCREEN ========= -->
+  <section id="landing" class="screen active">
+
+    <!-- Blur overlay sits between background hearts and content -->
+    <div class="landing-blur-overlay"></div>
+
+    <div class="landing-content">
+      <!-- Decorative top sparkles -->
+      <div class="landing-sparkles" aria-hidden="true">
+        <span class="ls-spark s1">✨</span>
+        <span class="ls-spark s2">🎂</span>
+        <span class="ls-spark s3">🌸</span>
+        <span class="ls-spark s4">✨</span>
+        <span class="ls-spark s5">🎉</span>
+      </div>
+
+      <!-- Main glowing heading -->
+      <h1 class="landing-heading" id="landingHeading">
+        Happy 16th Birthday,<br/>
+        <span class="landing-name-glow">Liya</span>
+        <span class="landing-emojis"> 🎂✨</span>
+      </h1>
+
+      <!-- Subtext -->
+      <p class="landing-subtext">I made something just for you…</p>
+
+      <!-- CTA button -->
+      <button class="btn-enter" id="btnEnter" onclick="enterSite()">
+        Open Your Surprise 💌
+      </button>
+
+      <!-- Bottom decorative dots -->
+      <div class="landing-dots" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Soft corner glows (decorative) -->
+    <div class="landing-glow g-tl" aria-hidden="true"></div>
+    <div class="landing-glow g-br" aria-hidden="true"></div>
+  </section>
+
+  <!-- ========= MAIN APP ========= -->
+  <div id="mainApp" class="main-app hidden">
+
+    <!-- ===== MAIN MENU SECTION ===== -->
+    <section class="section active" id="section-home">
+      <div class="menu-wrapper">
+
+        <!-- Floating greeting above the card -->
+        <div class="menu-greeting">
+          <span class="menu-emoji-top">🎂</span>
+          <h1 class="menu-title">Happy 16th Birthday,<br/><span class="menu-name">Liya!</span></h1>
+          <p class="menu-tagline">Choose where you'd like to go first 💌</p>
+        </div>
+
+        <!-- Glass menu card -->
+        <div class="menu-card glass-card">
+          <div class="menu-card-inner">
+
+            <button class="menu-btn" id="mbtn-letter" onclick="showSection('letter')">
+              <span class="mbtn-icon">💌</span>
+              <span class="mbtn-label">Letter From Me</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-memories" onclick="showSection('memories')">
+              <span class="mbtn-icon">🌟</span>
+              <span class="mbtn-label">Your Photos</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-timeline" onclick="showSection('timeline')">
+              <span class="mbtn-icon">🛤</span>
+              <span class="mbtn-label">Road to 16</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-gift" onclick="showSection('gift')">
+              <span class="mbtn-icon">🎁</span>
+              <span class="mbtn-label">Open Your Gift</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-cake" onclick="showSection('cake')">
+              <span class="mbtn-icon">🎂</span>
+              <span class="mbtn-label">Make a Wish</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-wishes" onclick="showSection('wishes')">
+              <span class="mbtn-icon">🌙</span>
+              <span class="mbtn-label">Birthday Wishes</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-countdown" onclick="showSection('countdown')">
+              <span class="mbtn-icon">⏳</span>
+              <span class="mbtn-label">Next Birthday Countdown</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-gallery" onclick="showSection('gallery')">
+              <span class="mbtn-icon">✨</span>
+              <span class="mbtn-label">Vibes</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-reasons" onclick="showSection('reasons')">
+              <span class="mbtn-icon">💌</span>
+              <span class="mbtn-label">16 Reasons</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+            <button class="menu-btn" id="mbtn-future" onclick="showSection('future')">
+              <span class="mbtn-icon">🔮</span>
+              <span class="mbtn-label">See Your Future</span>
+              <span class="mbtn-arrow">›</span>
+            </button>
+
+          </div><!-- /.menu-card-inner -->
+
+          <!-- Confetti trigger tucked at bottom of card -->
+          <div class="menu-confetti-row">
+            <button class="btn-confetti-sm" onclick="launchConfetti()">🎉 Celebrate with confetti!</button>
+          </div>
+        </div><!-- /.menu-card -->
+
+      </div><!-- /.menu-wrapper -->
+    </section>
+
+    <!-- ===== LETTER SECTION ===== -->
+    <section class="section" id="section-letter">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">💌</div>
+          <h2 class="section-title">A Letter For You</h2>
+          <p class="section-sub">Written with love, just for you</p>
+        </div>
+
+        <!-- Typewriter letter card -->
+        <div class="letter-card glass-card" id="letterCard">
+          <div class="letter-top">
+            <span class="letter-date">April 14, 2026</span>
+            <div class="letter-seal" id="letterSeal">🎂</div>
+          </div>
+
+          <!-- Lines rendered by JS -->
+          <div class="tw-body" id="twBody" aria-live="polite"></div>
+
+          <!-- Blinking cursor shown while typing -->
+          <span class="tw-cursor" id="twCursor">|</span>
+
+          <!-- Controls shown after animation completes -->
+          <div class="letter-controls hidden" id="letterControls">
+            <button class="btn-replay" onclick="startTypewriter()" id="replayBtn">
+              🔁 Replay Letter
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== MEMORIES SECTION ===== -->
+    <section class="section" id="section-memories">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">💫</div>
+          <h2 class="section-title">Your Photos</h2>
+          <p class="section-sub">Swipe through these beautiful moments 🌸</p>
+        </div>
+
+        <!-- Swipe card arena -->
+        <div class="swipe-arena">
+
+          <!-- Progress indicator -->
+          <div class="swipe-progress">
+            <span id="swipeCurrentNum">1</span>
+            <span class="swipe-progress-sep">/</span>
+            <span id="swipeTotalNum">5</span>
+          </div>
+
+          <!-- Card stack (JS renders the top card here) -->
+          <div class="swipe-stack" id="swipeStack">
+            <!-- Cards injected by JS -->
+          </div>
+
+          <!-- Heart burst (shown on each transition) -->
+          <div class="swipe-heart-burst" id="swipeHeart" aria-hidden="true"></div>
+
+          <!-- Arrow controls -->
+          <div class="swipe-controls">
+            <button class="swipe-arrow swipe-prev" id="swipePrev" onclick="memoryPrev()" aria-label="Previous memory">
+              <span>‹</span>
+            </button>
+            <div class="swipe-hint">
+              <span class="swipe-hint-icon">←</span>
+              <span class="swipe-hint-text">swipe or tap arrows</span>
+              <span class="swipe-hint-icon">→</span>
+            </div>
+            <button class="swipe-arrow swipe-next" id="swipeNext" onclick="memoryNext()" aria-label="Next memory">
+              <span>›</span>
+            </button>
+          </div>
+
+          <!-- Dot pagination -->
+          <div class="swipe-dots" id="swipeDots"></div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== TIMELINE SECTION ===== -->
+    <section class="section" id="section-timeline">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">🛤️</div>
+          <h2 class="section-title">Road to 16</h2>
+          <p class="section-sub">Tap any age to read a little something 💖</p>
+        </div>
+
+        <!-- Horizontal age timeline -->
+        <div class="hor-timeline-wrap">
+          <button class="hor-tl-arrow" id="htlPrev" onclick="htlScroll(-1)" aria-label="Scroll left">‹</button>
+
+          <div class="hor-timeline-scroll" id="htlScroll">
+            <div class="hor-timeline-track" id="htlTrack">
+              <!-- dots injected by JS -->
+            </div>
+          </div>
+
+          <button class="hor-tl-arrow" id="htlNext" onclick="htlScroll(1)" aria-label="Scroll right">›</button>
+        </div>
+
+        <!-- Message popup card -->
+        <div class="htl-message-card glass-card hidden" id="htlCard">
+          <div class="htl-msg-age" id="htlMsgAge">Age 0</div>
+          <p class="htl-msg-text" id="htlMsgText"></p>
+          <div class="htl-msg-glow" id="htlMsgGlow"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== GIFT SECTION ===== -->
+    <section class="section" id="section-gift">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">🎁</div>
+          <h2 class="section-title">Open Your Gift</h2>
+          <p class="section-sub">Something special, wrapped just for you 💝</p>
+        </div>
+
+        <div class="gift-reveal-area">
+
+          <!-- Animated gift box -->
+          <div class="gift-box-3d" id="giftBox" onclick="revealGift()">
+            <div class="gb-lid" id="gbLid">
+              <div class="gb-ribbon-h"></div>
+              <div class="gb-ribbon-v"></div>
+              <div class="gb-bow">🎀</div>
+            </div>
+            <div class="gb-body">
+              <div class="gb-ribbon-h"></div>
+              <div class="gb-shine"></div>
+            </div>
+            <p class="gift-tap-hint" id="gbHint">Tap to open 💝</p>
+          </div>
+
+          <!-- Sparkle layer -->
+          <div class="gift-sparkles" id="giftSparkles" aria-hidden="true"></div>
+
+          <!-- Revealed message -->
+          <div class="gift-message glass-card hidden" id="giftMessage">
+            <div class="gift-msg-icon">🎂</div>
+            <h3>You deserve the world, Liya! 🌟</h3>
+            <p>You are one of the most genuine and wonderful people I know. This birthday is just a small reminder of how special you are — not because of what you do, but simply because of who you are. Keep being amazing!</p>
+            <p class="gift-msg-ps">P.S. Your smile is pure sunshine. Never stop shining! 🌷</p>
+            <div class="gift-stars">⭐✨💫🌟✨⭐</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BIRTHDAY CAKE SECTION ===== -->
+    <section class="section" id="section-cake">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">🎂</div>
+          <h2 class="section-title">Make a Wish</h2>
+          <p class="section-sub">Click the candle flame to blow it out 🌬️</p>
+        </div>
+
+        <div class="cake-center">
+          <!-- Cake + candle SVG-style emoji stack -->
+          <div class="cake-stack" id="cakeStack">
+            <div class="candle-wrap">
+              <div class="candle-flame" id="candleFlame" onclick="blowCandleNew()">🔥</div>
+              <div class="candle-smoke hidden" id="candleSmoke">💨</div>
+              <div class="candle-body">🕯️</div>
+            </div>
+            <div class="cake-body">🎂</div>
+          </div>
+
+          <p class="candle-tap-hint" id="candleHint">Click the flame to blow it out! 🌬️</p>
+
+          <div class="cake-wish-msg glass-card hidden" id="cakeWishMsg">
+            <p class="cake-wish-text">
+              I hope all your wishes come true, Liya…<br/>
+              especially all the ones about your 17th birthday! 🎉✨
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== WISHES SECTION ===== -->
+    <section class="section" id="section-wishes">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">🌙</div>
+          <h2 class="section-title">Birthday Wishes</h2>
+          <p class="section-sub">Everything I pray and hope for you</p>
+        </div>
+
+        <div class="wishes-grid">
+          <div class="wish-card glass-card">
+            <div class="wish-icon">🌟</div>
+            <h4>Endless Joy</h4>
+            <p>I wish you laughter that never runs out. The kind that fills rooms and heals hearts — especially yours.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">💪</div>
+            <h4>Unbreakable Strength</h4>
+            <p>That when life gets heavy — and sometimes it will — you remember just how powerful you truly are inside.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">🏆</div>
+            <h4>Every Dream Fulfilled</h4>
+            <p>May the goals you hold closest to your heart become your reality, one beautiful step at a time.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">🤗</div>
+            <h4>True Friendships</h4>
+            <p>Friends who see you fully, choose you daily, and love you the way you deserve — always by your side.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">🌺</div>
+            <h4>Good Health</h4>
+            <p>A body and mind that carry you gracefully through all the beautiful adventures ahead in your life.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">✈️</div>
+            <h4>Adventures Everywhere</h4>
+            <p>New places, new experiences, new stories. May life take you to all the places your heart longs to see.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">💫</div>
+            <h4>Inner Peace</h4>
+            <p>A deep, unshakeable peace in your soul. The kind that stays even when things around you are uncertain.</p>
+          </div>
+          <div class="wish-card glass-card">
+            <div class="wish-icon">🎓</div>
+            <h4>A Brilliant Future</h4>
+            <p>May your 17th year bring new opportunities, growth, and everything you've ever dreamed of achieving.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== NEXT BIRTHDAY COUNTDOWN ===== -->
+    <section class="section" id="section-countdown">
+      <div class="section-inner" style="max-width: 700px;">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+
+        <div class="section-header">
+          <div class="section-icon">⏳</div>
+          <h2 class="section-title">Next Birthday Countdown</h2>
+          <p class="section-sub">Counting down to August 5, 2026 – You turn 17! 🎂</p>
+        </div>
+
+        <div class="glass-card" style="text-align:center; padding: 3rem 2rem;">
+          <p style="font-family:var(--font-script); font-size:1.8rem; color:var(--pink-700); margin-bottom:2rem;">
+            🎂 August 5, 2026 — Liya turns 17! 🎂
+          </p>
+          <div id="countdownDisplay" style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
+            <div class="countdown-block">
+              <div class="countdown-num" id="cdDays">--</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-block">
+              <div class="countdown-num" id="cdHours">--</div>
+              <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-block">
+              <div class="countdown-num" id="cdMins">--</div>
+              <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-block">
+              <div class="countdown-num" id="cdSecs">--</div>
+              <div class="countdown-label">Seconds</div>
+            </div>
+          </div>
+          <p style="margin-top:2rem; font-family:var(--font-main); font-size:1.1rem; color:var(--pink-600);" id="countdownMsg">
+            So much to look forward to! 🌟
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== 16 REASONS SECTION ===== -->
+    <section class="section" id="section-reasons">
+      <div class="section-inner" style="max-width: 900px;">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+        <div class="section-header">
+          <div class="section-icon">💫</div>
+          <h2 class="section-title">16 Reasons Why</h2>
+          <p class="section-sub">Tap to open each one. Find all 16! <span id="reasonsCount">0/16</span></p>
+        </div>
+        
+        <div class="reasons-grid" id="reasonsGrid">
+          <!-- JS will insert 16 flip cards here -->
+        </div>
+
+        <div id="reasonsFinal" class="reasons-final hidden">
+          <h3 class="secret-final" style="text-align:center; font-size: 2rem !important; margin-bottom:1rem;">And one more thing…</h3>
+          <p style="text-align:center; font-size:1.3rem; font-family:var(--font-script);">...you are Liya. There is no one else in the world quite like you. Happy 16th! 🎂💖</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEE YOUR FUTURE 🔮 ===== -->
+    <section class="section" id="section-future">
+      <div class="section-inner" style="max-width: 800px;">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+        
+        <div id="futureChoiceView" class="future-view">
+          <div class="section-header">
+            <div class="section-icon" style="text-shadow: 0 0 15px rgba(200, 100, 255, 0.8);">🔮</div>
+            <h2 class="section-title">See Your Future</h2>
+            <p class="section-sub">Upload your picture to reveal your future...</p>
+          </div>
+          <div class="future-options">
+            <div style="position: relative; width: 100%; display: flex; justify-content: center;">
+              <input type="file" id="futurePhotoUpload" accept="image/*" class="hidden" onchange="handleFuturePhoto(event)">
+              <button class="future-btn glass-card" onclick="document.getElementById('futurePhotoUpload').click()">
+                <div class="future-icon">📷</div>
+                <div class="future-text">Upload Image</div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="futureScanningView" class="future-view hidden">
+          <div class="future-preview-frame" id="futurePreviewFrame">
+            <img id="futurePhotoPreview" src="" alt="preview">
+          </div>
+          <div class="photo-scanner" id="photoScanner" style="margin-top:2rem;">
+            <div class="ps-spinner"></div>
+          </div>
+          <p class="scanning-text" id="scanningText">Processing image data... ✨</p>
+        </div>
+
+        <div id="futureAnalysisScene" class="future-view hidden" style="justify-content: center; align-items: center; text-align: center;">
+          <h3 style="color: #fff; font-family: var(--font-main); text-shadow: 0 0 10px #d4a5ff; margin-bottom: 2rem;">Analyzing your future... 🌍✨</h3>
+          <div class="earth-realm" style="margin: 0 auto; margin-bottom: 2rem;">
+            <div class="earth-sphere"></div>
+            <div class="earth-shadow"></div>
+          </div>
+          <div class="time-evolve-counter" id="futureYearOverlay">2026</div>
+          <div id="analysisTextContainer" style="min-height: 40px; margin-top: 1rem;">
+            <p class="cinematic-subtext" id="analysisDynamicText"></p>
+          </div>
+        </div>
+
+        <div id="futureResultView" class="future-view hidden">
+          <!-- Phase 1: Initial Poem -->
+          <div class="future-message-container" id="futureMessageContainer">
+            <!-- Messages added by JS -->
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="future-actions hidden" id="futureActionBtns" style="text-align: center; margin-top: 3rem; padding-bottom: 3rem;">
+            <button class="btn-enter" onclick="resetFuture()" style="margin-bottom: 1rem; width: 100%; max-width: 300px;">Show again 🔁</button><br/>
+            <button class="btn-enter" onclick="showSection('home')" style="width: 100%; max-width: 300px;">Back to menu ⬅️</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===== GALLERY / VIBES SECTION ===== -->
+    <section class="section" id="section-gallery">
+      <div class="section-inner">
+        <button class="btn-back" onclick="showSection('home')">← Back to Menu</button>
+        <div class="section-header">
+          <div class="section-icon">✨</div>
+          <h2 class="section-title">Birthday Vibes</h2>
+          <p class="section-sub">The energy of your special day 🎊</p>
+        </div>
+
+        <div class="quote-carousel" id="quoteCarousel">
+          <div class="quote-slide active">
+            <div class="quote-card glass-card">
+              <p class="quote-text">"She is clothed in strength and dignity, and she laughs without fear of the future."</p>
+              <span class="quote-source">— Proverbs 31:25</span>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="quote-card glass-card">
+              <p class="quote-text">"You are enough. You have always been enough. You will always be more than enough."</p>
+              <span class="quote-source">— For You, Always</span>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="quote-text-wrap quote-card glass-card">
+              <p class="quote-text">"She believed she could, so she did — and she did it beautifully."</p>
+              <span class="quote-source">— Your Story</span>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="quote-card glass-card">
+              <p class="quote-text">"The most beautiful thing you can wear is confidence. You wear it naturally."</p>
+              <span class="quote-source">— Someone Who Sees You</span>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="quote-card glass-card">
+              <p class="quote-text">"Sixteen looks absolutely gorgeous on you, Liya. So does everything else."</p>
+              <span class="quote-source">— With all my love 🎂</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="prevQuote()">‹</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" onclick="nextQuote()">›</button>
+        </div>
+
+        <div class="vibe-emojis">
+          <div class="vibe-emoji-row">
+            <span class="vibe-emoji" style="--delay:0s">🎂</span>
+            <span class="vibe-emoji" style="--delay:0.2s">🌸</span>
+            <span class="vibe-emoji" style="--delay:0.4s">✨</span>
+            <span class="vibe-emoji" style="--delay:0.6s">🎉</span>
+            <span class="vibe-emoji" style="--delay:0.8s">🌺</span>
+            <span class="vibe-emoji" style="--delay:1s">💫</span>
+            <span class="vibe-emoji" style="--delay:1.2s">🎊</span>
+            <span class="vibe-emoji" style="--delay:1.4s">🌟</span>
+          </div>
+        </div>
+
+        <div class="final-message glass-card">
+          <h3>To the most amazing 16-year-old 🌟</h3>
+          <p>May this year bring you everything your heart desires. You deserve the whole world, Liya — and then some. I am so glad you exist. Happy birthday, friend!</p>
+          <div class="final-hearts">🎂🌸✨🎉💫</div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end mainApp -->
+
+    <!-- ===== BACKGROUND MUSIC ===== -->
+  <audio id="bgMusic" loop autoplay preload="auto">
+    <source src="sound.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- iPhone/Spotify Inspired Music Player Widget -->
+  <div class="iphone-player" id="musicWidget">
+    <div class="player-top">
+      <div class="album-art">
+        <div class="visualizer" id="mwWave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="song-info">
+        <h3 class="song-name">For Liya</h3>
+        <p class="artist-name">Birthday Special</p>
+      </div>
+      <div class="airplay-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"></path></svg>
+      </div>
+    </div>
+    
+    <div class="progress-container">
+      <div class="time-stamps">
+        <span id="time-current">0:00</span>
+        <span id="time-total">--:--</span>
+      </div>
+      <div class="progress-bar-wrapper">
+        <input type="range" id="progress-bar" value="0" min="0" max="100" class="styled-seekbar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn backward"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6,18L14.5,12L6,6V18M16,6V18H18V6H16Z" transform="rotate(180 12 12)"/></svg></button>
+      <button class="ctrl-btn play-pause" onclick="toggleMusic()" id="mwControl">
+        <svg class="mw-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
+        <svg class="mw-pause hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
+      </button>
+      <button class="ctrl-btn forward"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6,18L14.5,12L6,6V18M16,6V18H18V6H16Z" /></svg></button>
+    </div>
+
+    <div class="volume-container">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="vol-icon"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.01,19.86 21,16.28 21,12C21,7.72 18.01,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.03C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+      <input type="range" id="volume-bar" value="100" min="0" max="100" class="styled-volbar">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

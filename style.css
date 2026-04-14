@@ -2012,8 +2012,9 @@ body::before {
 .hor-timeline-track {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center nodes if track is wider than content */
   gap: 0;
-  min-width: max-content;
+  min-width: 100%; /* Ensure track spans full width for centering */
   position: relative;
 }
 
@@ -2024,10 +2025,15 @@ body::before {
   top: 50%;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #ffd6e8 5%, #c8a8ff 50%, #ffd6e8 95%, transparent);
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255,214,232,0) 0%, 
+    rgba(255,214,232,1) 15%, 
+    rgba(200,168,255,1) 50%, 
+    rgba(255,214,232,1) 85%, 
+    rgba(255,214,232,0) 100%
+  );
   transform: translateY(-50%);
-  border-radius: 3px;
   z-index: 0;
 }
 
@@ -2067,8 +2073,8 @@ body::before {
     0 0 32px rgba(180,100,255,0.35);
 }
 
-/* Age 19 — special larger pulsing dot */
-.htl-node[data-age="19"] .htl-dot {
+/* Age 17 — special larger pulsing dot */
+.htl-node[data-age="17"] .htl-dot {
   width: 28px;
   height: 28px;
   background: linear-gradient(135deg, #f94f8a, #c06aff);
@@ -2098,7 +2104,7 @@ body::before {
   color: var(--pink-500);
 }
 
-.htl-node[data-age="19"] .htl-label {
+.htl-node[data-age="17"] .htl-label {
   color: var(--pink-500);
   font-size: 0.78rem;
 }
@@ -2141,7 +2147,7 @@ body::before {
   transition: box-shadow 0.4s ease;
 }
 
-.htl-msg-glow.glow-19 {
+.htl-msg-glow.glow-17 {
   box-shadow:
     0 0 40px rgba(249,79,138,0.45),
     0 0 80px rgba(180,100,255,0.3),

@@ -366,6 +366,7 @@ const HTL_MESSAGES = {
   14: { label: 'Age 14', text: 'High school days and new adventures 💪' },
   15: { label: 'Age 15', text: 'Becoming someone truly special ⭐' },
   16: { label: 'Age 16', text: 'Sweet 16! You are incredible, Liya ✨' },
+  17: { label: 'Age 17', text: 'April 14 — Ongoing 💖' },
 };
 
 let htlInited    = false;
@@ -398,8 +399,8 @@ function initHorizontalTimeline() {
   // Stop any running auto-play from a previous visit
   clearInterval(htlAutoTimer);
 
-  // Create a node for each age 0–16
-  for (let age = 0; age <= 16; age++) {
+  // Create a node for each age 0–17
+  for (let age = 0; age <= 17; age++) {
     const node = document.createElement('div');
     node.className = 'htl-node';
     node.dataset.age = age;
@@ -421,7 +422,7 @@ function initHorizontalTimeline() {
 
     htlAutoTimer = setInterval(() => {
       current++;
-      if (current > 16) { clearInterval(htlAutoTimer); return; }
+      if (current > 17) { clearInterval(htlAutoTimer); return; }
       htlSelectAge(current);
       playAgeChime(current);
     }, 1500);
@@ -462,7 +463,7 @@ function htlSelectAge(age) {
   const updateContent = () => {
     ageEl.textContent  = msg.label;
     textEl.textContent = msg.text;
-    if (glowEl) glowEl.className = age === 16 ? 'htl-msg-glow glow-16' : 'htl-msg-glow';
+    if (glowEl) glowEl.className = age === 17 ? 'htl-msg-glow glow-17' : 'htl-msg-glow';
   };
 
   const fadeIn = () => {
@@ -483,8 +484,8 @@ function htlSelectAge(age) {
     setTimeout(() => { updateContent(); fadeIn(); }, 160);
   }
 
-  // Age 16 special 🎉
-  if (age === 16) {
+  // Age 17 special 🎉
+  if (age === 17) {
     setTimeout(() => launchConfetti(true), 300);
   }
 }

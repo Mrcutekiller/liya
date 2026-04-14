@@ -56,6 +56,13 @@ function enterSite() {
         startCarouselTimer();
         animateTimelineOnScroll();
         initMusic();
+
+        // Reposition Music Widget for the Menu
+        const widget = document.getElementById('musicWidget');
+        const greeting = document.querySelector('.menu-greeting');
+        if (widget && greeting) {
+          greeting.insertBefore(widget, greeting.firstChild);
+        }
       }, 80);
 
     }, 480); // reveal app at ~halfway through the 900ms landing fade

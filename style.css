@@ -2981,13 +2981,12 @@ body::before {
    STUNNING TOP PILL MUSIC PLAYER (DYNAMIC ISLAND STYLE)
    ============================================================ */
 .pill-player {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin: 0 auto 30px auto;
   z-index: 1000;
   height: 44px;
   min-width: 200px;
+  max-width: fit-content;
   padding: 0 8px 0 14px;
   display: flex;
   align-items: center;

@@ -608,47 +608,21 @@
     <source src="sound.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- iPhone/Spotify Inspired Music Player Widget -->
-  <div class="iphone-player" id="musicWidget">
-    <div class="player-top">
-      <div class="album-art">
-        <div class="visualizer" id="mwWave">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-      </div>
-      <div class="song-info">
-        <h3 class="song-name">For Liya</h3>
-        <p class="artist-name">Birthday Special</p>
-      </div>
-      <div class="airplay-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"></path></svg>
+  <!-- Compact "Dynamic Island" style Pill Music Player -->
+  <div class="pill-player" id="musicWidget">
+    <div class="pill-art">
+      <div class="pill-visualizer" id="mwWave">
+        <span></span><span></span><span></span>
       </div>
     </div>
-    
-    <div class="progress-container">
-      <div class="time-stamps">
-        <span id="time-current">0:00</span>
-        <span id="time-total">--:--</span>
-      </div>
-      <div class="progress-bar-wrapper">
-        <input type="range" id="progress-bar" value="0" min="0" max="100" class="styled-seekbar">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
+    <div class="pill-info">
+      <span class="pill-title">For Liya</span>
+      <span class="pill-time" id="time-current">0:00</span>
     </div>
-
-    <div class="controls">
-      <button class="ctrl-btn backward"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6,18L14.5,12L6,6V18M16,6V18H18V6H16Z" transform="rotate(180 12 12)"/></svg></button>
-      <button class="ctrl-btn play-pause" onclick="toggleMusic()" id="mwControl">
-        <svg class="mw-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
-        <svg class="mw-pause hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
-      </button>
-      <button class="ctrl-btn forward"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6,18L14.5,12L6,6V18M16,6V18H18V6H16Z" /></svg></button>
-    </div>
-
-    <div class="volume-container">
-      <svg viewBox="0 0 24 24" fill="currentColor" class="vol-icon"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.01,19.86 21,16.28 21,12C21,7.72 18.01,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.03C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
-      <input type="range" id="volume-bar" value="100" min="0" max="100" class="styled-volbar">
-    </div>
+    <button class="pill-control" onclick="toggleMusic()" id="mwControl">
+      <svg class="mw-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
+      <svg class="mw-pause hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
+    </button>
   </div>
 
   <script src="script.js"></script>

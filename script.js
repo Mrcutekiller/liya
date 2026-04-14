@@ -574,17 +574,17 @@ function formatTime(seconds) {
 }
 
 function updateMusicWidget(isPlaying) {
-  const wave = document.getElementById('mwWave');
+  const player = document.getElementById('musicWidget');
   const playBtn = document.querySelector('.mw-play');
   const pauseBtn = document.querySelector('.mw-pause');
-  if (!wave || !playBtn || !pauseBtn) return;
+  if (!player || !playBtn || !pauseBtn) return;
   
   if (isPlaying) {
-    wave.classList.add('active');
+    player.classList.add('playing');
     playBtn.classList.add('hidden');
     pauseBtn.classList.remove('hidden');
   } else {
-    wave.classList.remove('active');
+    player.classList.remove('playing');
     playBtn.classList.remove('hidden');
     pauseBtn.classList.add('hidden');
   }
@@ -592,43 +592,37 @@ function updateMusicWidget(isPlaying) {
 
 function initMusic() {
   const audio = document.getElementById('bgMusic');
-  const progressBar = document.getElementById('progress-bar');
-  const progressFill = document.getElementById('progress-fill');
+  const progressContainer = document.getElementById('mwProgress');
+  const progressBar = document.getElementById('mwProgressBar');
   const timeCurrent = document.getElementById('time-current');
-  const timeTotal = document.getElementById('time-total');
-  const volumeBar = document.getElementById('volume-bar');
 
   if (!audio) return;
-
-  // Sync initial volume
-  audio.volume = volumeBar ? volumeBar.value / 100 : 1;
 
   // Progress logic
   audio.addEventListener('timeupdate', () => {
     const percent = (audio.currentTime / audio.duration) * 100;
-    if (progressBar) progressBar.value = percent || 0;
-    if (progressFill) progressFill.style.width = (percent || 0) + '%';
+    if (progressBar) progressBar.style.width = (percent || 0) + '%';
     if (timeCurrent) timeCurrent.textContent = formatTime(audio.currentTime);
   });
 
-  audio.addEventListener('loadedmetadata', () => {
-    if (timeTotal) timeTotal.textContent = formatTime(audio.duration);
-  });
-
   // Seek logic
-  if (progressBar) {
-    progressBar.addEventListener('input', () => {
-      const time = (progressBar.value / 100) * audio.duration;
-      audio.currentTime = time;
+  if (progressContainer) {
+    progressContainer.addEventListener('click', (e) => {
+      const rect = progressContainer.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pos * audio.duration;
     });
   }
 
-  // Volume logic
-  if (volumeBar) {
-    volumeBar.addEventListener('input', () => {
-      audio.volume = volumeBar.value / 100;
-    });
-  }
+  // Volume toggle logic (Simplified for pill)
+  window.toggleVolume = () => {
+    if (audio.volume > 0) {
+      audio.dataset.oldVol = audio.volume;
+      audio.volume = 0;
+    } else {
+      audio.volume = audio.dataset.oldVol || 0.7;
+    }
+  };
 
   // Attempt autoplay
   const playPromise = audio.play();
@@ -1243,29 +1237,29 @@ document.addEventListener('DOMContentLoaded', () => {
    16 REASONS FLIP CARDS
    ============================================================ */
 const REASONS = [
-  "You're an incredibly loyal and supportive friend.",
-  "Your laugh makes every hangout better.",
-  "You always know how to listen when someone needs it.",
-  "You're just so fun to be around.",
-  "You have a really good heart.",
-  "You chase your goals with so much determination.",
-  "You have amazing taste and style.",
-  "You always bring positive vibes.",
-  "You are insanely smart and capable.",
-  "You handle hard days with so much grace.",
-  "You inspire the people around you.",
-  "You are authentic—you're just wonderfully you.",
-  "You've got the best sense of humor.",
-  "You care so deeply about the people in your life.",
-  "You have an amazing smile that lights up the room.",
-  "You are Liya, and there's no one else like you."
+  { text: "You're an incredibly loyal and supportive friend.", emoji: "🤝" },
+  { text: "Your laugh makes every hangout better.", emoji: "😂" },
+  { text: "You always know how to listen when someone needs it.", emoji: "👂" },
+  { text: "You're just so fun to be around.", emoji: "🎈" },
+  { text: "You have a really good heart.", emoji: "💖" },
+  { text: "You chase your goals with so much determination.", emoji: "🔥" },
+  { text: "You have amazing taste and style.", emoji: "✨" },
+  { text: "You always bring positive vibes.", emoji: "🌈" },
+  { text: "You are insanely smart and capable.", emoji: "🧠" },
+  { text: "You handle hard days with so much grace.", emoji: "🕊️" },
+  { text: "You inspire the people around you.", emoji: "🌟" },
+  { text: "You are authentic—you're just wonderfully you.", emoji: "💎" },
+  { text: "You've got the best sense of humor.", emoji: "😜" },
+  { text: "You care so deeply about the people in your life.", emoji: "🌸" },
+  { text: "You have an amazing smile that lights up the room.", emoji: "☀️" },
+  { text: "You are Liya, and there's no one else like you.", emoji: "🎂" }
 ];
 
 let reasonsFlipped = 0;
 let reasonsInited = false;
 
 function initReasonsGrid() {
-  if (reasonsInited) return; // only build once to preserve state
+  if (reasonsInited) return;
   
   const grid = document.getElementById('reasonsGrid');
   if (!grid) return;
@@ -1276,9 +1270,12 @@ function initReasonsGrid() {
   const countEl = document.getElementById('reasonsCount');
   const finalEl = document.getElementById('reasonsFinal');
   if (countEl) countEl.textContent = `0/16`;
-  if (finalEl) finalEl.classList.add('hidden');
+  if (finalEl) {
+    finalEl.classList.add('hidden');
+    finalEl.classList.remove('visible');
+  }
 
-  REASONS.forEach((text, i) => {
+  REASONS.forEach((reason, i) => {
     const num = i + 1;
     const card = document.createElement('div');
     card.className = 'reason-card';
@@ -1288,10 +1285,10 @@ function initReasonsGrid() {
       <div class="reason-inner">
         <div class="reason-front">
           <span class="rf-num">${num}</span>
-          <span class="rf-icon">💌</span>
+          <span class="rf-icon">${reason.emoji}</span>
         </div>
         <div class="reason-back">
-          ${text}
+          ${reason.text}
         </div>
       </div>
     `;
@@ -1302,14 +1299,12 @@ function initReasonsGrid() {
         reasonsFlipped++;
         if (countEl) countEl.textContent = `${reasonsFlipped}/16`;
         
-        // Soft pop sound
-        /* pop sound removed */
-
         if (reasonsFlipped === 16) {
           setTimeout(() => {
             launchConfetti(true);
             if (finalEl) {
               finalEl.classList.remove('hidden');
+              finalEl.classList.add('visible');
               finalEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }, 600);
@@ -1318,6 +1313,11 @@ function initReasonsGrid() {
     });
 
     grid.appendChild(card);
+    
+    // Staggered reveal animation
+    setTimeout(() => {
+      card.classList.add('reveal');
+    }, i * 100);
   });
   
   reasonsInited = true;

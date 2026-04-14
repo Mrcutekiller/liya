@@ -29,21 +29,36 @@
 
     <div class="landing-content">
   
-      <!-- Compact "Dynamic Island" style Pill Music Player -->
+      <!-- Professional "Ultra Pill" Music Player -->
       <div class="pill-player" id="musicWidget">
         <div class="pill-art">
           <div class="pill-visualizer" id="mwWave">
-            <span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
           </div>
         </div>
-        <div class="pill-info">
-          <span class="pill-title">For Liya</span>
-          <span class="pill-time" id="time-current">0:00</span>
+        
+        <div class="pill-center">
+          <div class="pill-info">
+            <span class="pill-title">For Liya</span>
+            <span class="pill-status" id="time-current">0:00</span>
+          </div>
+          <div class="pill-progress-container" id="mwProgress">
+            <div class="pill-progress-bar" id="mwProgressBar"></div>
+          </div>
         </div>
-        <button class="pill-control" onclick="toggleMusic()" id="mwControl">
-          <svg class="mw-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
-          <svg class="mw-pause hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
-        </button>
+
+        <div class="pill-controls">
+          <button class="pill-volume-toggle" id="mwVolume" onclick="toggleVolume()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.02C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+          </button>
+          <button class="pill-control" onclick="toggleMusic()" id="mwControl">
+            <svg class="mw-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
+            <svg class="mw-pause hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
+          </button>
+        </div>
       </div>
 
       <!-- Decorative top sparkles -->

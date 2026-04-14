@@ -2987,11 +2987,9 @@ body::before {
    STUNNING TOP PILL MUSIC PLAYER (DYNAMIC ISLAND STYLE)
    ============================================================ */
 .pill-player {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
+  position: relative;
+  margin: 0 auto 30px auto;
+  z-index: 1000;
   height: 48px;
   min-width: 220px;
   max-width: fit-content;
@@ -3013,7 +3011,7 @@ body::before {
 .pill-player:hover {
   background: rgba(55, 58, 62, 0.95);
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 45, 126, 0.3);
-  transform: translateX(-50%) translateY(2px) scale(1.02);
+  transform: translateY(2px) scale(1.02);
 }
 
 .pill-art {

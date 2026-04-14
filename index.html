@@ -21,23 +21,6 @@
   <!-- ========= PARTICLE STARS ========= -->
   <div class="stars-container" id="starsContainer"></div>
 
-  <!-- Compact "Dynamic Island" style Pill Music Player -->
-  <div class="pill-player" id="musicWidget">
-    <div class="pill-art">
-      <div class="pill-visualizer" id="mwWave">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="pill-info">
-      <span class="pill-title">For Liya</span>
-      <span class="pill-time" id="time-current">0:00</span>
-    </div>
-    <button class="pill-control" onclick="toggleMusic()" id="mwControl">
-      <svg class="mw-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
-      <svg class="mw-pause hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
-    </button>
-  </div>
-
   <!-- ========= LANDING SCREEN ========= -->
   <section id="landing" class="screen active">
 
@@ -45,6 +28,23 @@
     <div class="landing-blur-overlay"></div>
 
     <div class="landing-content">
+  
+      <!-- Compact "Dynamic Island" style Pill Music Player -->
+      <div class="pill-player" id="musicWidget">
+        <div class="pill-art">
+          <div class="pill-visualizer" id="mwWave">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="pill-info">
+          <span class="pill-title">For Liya</span>
+          <span class="pill-time" id="time-current">0:00</span>
+        </div>
+        <button class="pill-control" onclick="toggleMusic()" id="mwControl">
+          <svg class="mw-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
+          <svg class="mw-pause hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
+        </button>
+      </div>
 
       <!-- Decorative top sparkles -->
       <div class="landing-sparkles" aria-hidden="true">

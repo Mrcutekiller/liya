@@ -83,6 +83,17 @@ function showSection(name) {
 
   currentSection = name;
 
+  // Move Music Widget to the top of the current section
+  const widget = document.getElementById('musicWidget');
+  if (widget && target) {
+    const inner = target.querySelector('.section-inner');
+    if (inner) {
+      inner.insertBefore(widget, inner.firstChild);
+    } else {
+      target.insertBefore(widget, target.firstChild);
+    }
+  }
+
   // Auto-start typewriter when entering letter
   if (name === 'letter') {
     setTimeout(startTypewriter, 400);
